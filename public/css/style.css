@@ -1,0 +1,197 @@
+body {
+  background-color: #efe7e3;
+}
+
+.frame {
+  margin: 30px 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigator {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+li {
+  display: inline;
+  align-self: center;
+  margin: 0;
+  margin-left: 15px;
+}
+
+ul {
+  margin: 0;
+}
+
+.site-name {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Mooli", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #c2b4ab;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.site-logo {
+  height: 100px;
+  width: 100px;
+  border-radius: 200px;
+}
+
+.nav-menu {
+  font-family: "Gasoek One", sans-serif;
+  font-family: "Mooli", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-menu:hover {
+  color: rgb(190, 68, 88);
+  transition: 0.3s;
+}
+
+/*dashboard*/
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.korean-comment {
+  font-family: caveat;
+}
+
+.sample {
+  color: #856f62;
+}
+
+.sample:hover {
+  background-color: white;
+  transition: none;
+}
+
+.highlight {
+  color: white;
+  -webkit-text-stroke: 1px black;
+  transition: none;
+}
+
+.type1:hover {
+  background-color: #856f62;
+}
+
+.english-comment {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: -0.3px;
+}
+
+/*recent works*/
+.recent-menu {
+  font-family: "Montserrat", sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  color: #c2b4ab;
+  margin-top: 100px;
+  display: inline;
+  align-self: center;
+}
+
+.recent-menu:hover {
+  color: white;
+}
+
+/*footer*/
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.contact {
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+  font-weight: 600px;
+  color: #856f62;
+  border-bottom: 1px solid #856f62;
+}
+
+.links > a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 400px;
+  margin-bottom: 20px;
+}
+
+.links > a:hover {
+  color: white;
+  transition: none;
+  margin-left: 15px;
+}
+
+.footer > p {
+  font-family: "Montserrat";
+  font-weight: 100px;
+  font-size: 15px;
+  font-style: italic;
+  margin: 0;
+  margin-top: 5px;
+}
+
+/*valuemenu*/
+
+.value-menu {
+  font-family: "Montserrat";
+  font-size: 45px;
+  margin: 30px 100px;
+  font-weight: bold;
+}
+
+/*vlaue-section*/
+.value-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 100px 150px;
+  margin-top: 20px;
+}
+
+.value {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.value-icon {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #c2b4ab;
+  border-radius: 100px;
+  margin-right: 50px;
+}
+
+.value-intro {
+  margin-left: 30px;
+}
+
+.value-name {
+  font: "Montserrat", sans-serif;
+  font-weight: 700px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}

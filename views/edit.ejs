@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/public/main.css" rel="stylesheet" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="grey=bg">
+  
+  
+      <form class="form-box" action="/edit?_method=PUT" method="POST">
+        <h4>update page</h4>
+        <input name="id" value="<%=result._id%>" style="display:none"> 
+        name<input name="name" value="<%= result.name%>">
+        description<input name="description" value="<%= result.description%>">
+        category<input name="category" value="<%= result.category%>">
+        price<input name="price" value="<%= result.price%>">
+        published<input name="published" value="<%= result.published%>" >
+        <button type="submit">confirm</button>
+    </form>
+    
+    </div>
+  </body>
+</html>

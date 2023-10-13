@@ -1,0 +1,60 @@
+/*RECENT WORK*/
+.recent-works {
+  display: flex;
+  flex-direction: column;
+}
+
+.article {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 60px;
+}
+
+#arti2 {
+  align-self: self-end;
+}
+
+.thumbnail {
+  width: 200px;
+  height: 200px;
+}
+
+.article-info {
+  margin: 0px 20px;
+}
+
+.article-name {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.article-name:hover {
+  color: pink;
+  -webkit-text-stroke: 1px black;
+  transition: none;
+}
+
+.article-info {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.font-comment {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.more {
+  font-family: "Montserrat", sans-serif;
+  height: content;
+  width: content;
+  background-color: transparent;
+  border: none;
+  font-size: 13px;
+}
+
+.more:hover {
+  color: white;
+}

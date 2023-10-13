@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/public/main.css" rel="stylesheet" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <% for(let i =0 ; i< 글목록.length ; i++) {%>
+    <div>
+      <p>name : <%=글목록[i].name%></p>
+      <p>description : <%=글목록[i].description%></p>
+      <p>category : <%=글목록[i].category%></p>
+      <p>price : <%=글목록[i].price%></p>
+      <p>published : <%=글목록[i].published%></p>
+      <a href="/edit/<%=글목록[i]._id%>">update</a>
+      <span class="delete" data-id="<%=글목록[i]._id%>">delete</span>
+
+      <p>--------------------------------------</p>
+    </div>
+    <%}%>
+
+    <script>
+      const deleteButton = document.querySelectorAll(".delete");
+
+      deleteButtons.forEach((button) => {
+        button.add.addEventListener("click", function (e) {
+          fetch("/delete?docid=" + e.target.dataset.id, {
+            method: "DELETE",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
