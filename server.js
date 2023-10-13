@@ -8,7 +8,6 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
-//요청.body를 위한 코드
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,7 +17,7 @@ const url =
 new MongoClient(url)
   .connect()
   .then((client) => {
-    console.log("DB연결성공");
+    console.log("DB connected");
     db = client.db("DressStore");
     app.listen(3080, function () {
       console.log("listening on 3080");
@@ -28,99 +27,99 @@ new MongoClient(url)
     console.log(err);
   });
 
-//첫화면 만들기
+//making index page
 app.get("/", function (req, res) {
   res.json({ message: "Welcome to DressStore application." });
 });
 
-//mongoDB에 있는 모든 컬렉션 출력
-app.get("/products", async (요청, 응답) => {
+//print all collections in mongoDB
+app.get("/products", async (req, res) => {
   let result = await db.collection("products").find().toArray();
   console.log(result);
-  응답.render("list.ejs", { 글목록: result });
+  res.render("list.ejs", { datalist: result });
 });
 
-//id로 제품 검색하기
-app.get("/api/products/:id", async (요청, 응답) => {
+//search by id
+app.get("/api/products/:id", async (req, res) => {
   try {
     let result = await db
       .collection("products")
-      .findOne({ _id: new ObjectId(요청.params.id) }); //하나의 도큐먼트 찾아옴
+      .findOne({ _id: new ObjectId(req.params.id) });
     console.log(result);
-    응답.render("detail.ejs", { result: result });
+    res.render("detail.ejs", { result: result });
   } catch (e) {
     console.log(e);
-    응답.status(500).send("이상한 url 입력함");
+    res.status(500).send("wrong URL");
   }
 });
 
-//데이터 만들기
-app.get("/write", (요청, 응답) => {
-  응답.render("write.ejs");
+//write data, add data
+app.get("/write", (req, res) => {
+  res.render("write.ejs");
 });
 
-app.post("/api/products", async (요청, 응답) => {
-  console.log(요청.body);
+app.post("/api/products", async (req, res) => {
+  console.log(req.body);
 
   await db.collection("products").insertOne({
-    name: 요청.body.name,
-    description: 요청.body.description,
-    category: 요청.body.category,
-    price: 요청.body.price,
-    published: 요청.body.published,
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    price: req.body.price,
+    published: req.body.published,
   });
   console.log("post success!");
-  응답.redirect("/products");
+  res.redirect("/products");
 });
 
-//수정 기능(업데이트)
-app.get("/edit/:id", async (요청, 응답) => {
+//update
+app.get("/edit/:id", async (req, res) => {
   let result = await db
     .collection("products")
-    .findOne({ _id: new ObjectId(요청.params.id) });
+    .findOne({ _id: new ObjectId(req.params.id) });
   console.log(result);
-  응답.render("edit.ejs", { result: result });
+  res.render("edit.ejs", { result: result });
 });
 
-app.put("/api/products/:id", async (요청, 응답) => {
+app.put("/api/products/:id", async (req, res) => {
   await db.collection("products").updateOne(
-    { _id: new ObjectId(요청.params.id) },
+    { _id: new ObjectId(req.params.id) },
     {
       $set: {
-        name: 요청.body.name,
-        description: 요청.body.description,
-        category: 요청.body.category,
-        price: 요청.body.price,
-        published: 요청.body.published,
+        name: req.body.name,
+        description: req.body.description,
+        category: req.body.category,
+        price: req.body.price,
+        published: req.body.published,
       },
     }
   );
   console.log("update success!");
-  응답.redirect("/products");
+  res.redirect("/products");
 });
 
-//name query로 찾기
-app.get("/api/products", async (요청, 응답) => {
+//finding by name
+app.get("/api/products", async (req, res) => {
   let result = await db
     .collection("products")
-    .find({ name: 요청.query.name })
-    .toArray(); //하나의 도큐먼트 찾아옴
+    .find({ name: req.query.name })
+    .toArray();
   console.log(result);
-  응답.render("list.ejs", { 글목록: result });
+  res.render("list.ejs", { datalist: result });
 });
 
-//published로 검색하기
-app.get("/published", async (요청, 응답) => {
+//search if it is published
+app.get("/published", async (req, res) => {
   try {
     let result = await db
       .collection("products")
       .find({ published: "true" })
-      .toArray(); //하나의 도큐먼트 찾아옴
+      .toArray();
     console.log(result);
-    응답.render("list.ejs", { 글목록: result });
+    res.render("list.ejs", { datalist: result });
   } catch (e) {
     console.log(e);
-    응답.status(500).send("이상한 url 입력함");
+    res.status(500).send("wrong url");
   }
 });
 

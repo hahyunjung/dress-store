@@ -13,15 +13,15 @@
     />
   </head>
   <body>
-    <% for(let i =0 ; i< 글목록.length ; i++) {%>
+    <% for(let i =0 ; i< datalist.length ; i++) {%>
     <div>
-      <p>name : <%=글목록[i].name%></p>
-      <p>description : <%=글목록[i].description%></p>
-      <p>category : <%=글목록[i].category%></p>
-      <p>price : <%=글목록[i].price%></p>
-      <p>published : <%=글목록[i].published%></p>
-      <a href="/edit/<%=글목록[i]._id%>">update</a>
-      <span class="delete" data-id="<%=글목록[i]._id%>">delete</span>
+      <p>name : <%=datalist[i].name%></p>
+      <p>description : <%=dataliast[i].description%></p>
+      <p>category : <%=datalist[i].category%></p>
+      <p>price : <%=datalist[i].price%></p>
+      <p>published : <%=datalist[i].published%></p>
+      <a href="/edit/<%=datalist[i]._id%>">update</a>
+      <span class="delete" data-id="<%=datalist[i]._id%>">delete</span>
 
       <p>--------------------------------------</p>
     </div>
